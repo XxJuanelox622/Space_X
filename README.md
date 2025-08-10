@@ -93,7 +93,7 @@ Cámara que sigue al personaje para mantenerlo centrado en la pantalla durante e
 
  ###  Imagen Referente a La Escena 
  <p align="center">
-  <img src="https://github.com/XxJuanelox622/Space_X/raw/765a3328492bdd772221d536dccf5355bdce9d55/capturas%20escenas/Personaje.png" alt="Personaje del juego" width="500"/>
+  <img src="https://github.com/XxJuanelox622/Space_X/blob/6c805d73e9414c5add4c55bced0acef7f5582e5b/Captura%20de%20pantalla%202025-08-10%20042304.png?raw=true" width="600" />
 </p>
 
 
@@ -204,7 +204,7 @@ Debe estar conectado a la función volver_menu() del script del jugador o contro
 
  ###  Imagen Referente a La Escena 
 <p align="center">
-  <img src="https://github.com/XxJuanelox622/Space_X/raw/765a3328492bdd772221d536dccf5355bdce9d55/capturas%20escenas/Level%201.png" alt="Nivel 1 del juego" width="500"/>
+  <img src="https://raw.githubusercontent.com/XxJuanelox622/Space_X/e5b2661909ef6a687571b3d70733148388ac8116/Captura%20de%20pantalla%202025-08-10%20042529.png" width="600" />
 </p>
 
 
@@ -259,9 +259,8 @@ Debe estar conectado a la función volver_menu() del script del jugador o contro
 
  ###  Imagen Referente a La Escena 
 <p align="center">
-  <img src="https://github.com/XxJuanelox622/Space_X/raw/765a3328492bdd772221d536dccf5355bdce9d55/capturas%20escenas/level%202.png" alt="Nivel 2 del juego" width="500"/>
+  <img src="https://raw.githubusercontent.com/XxJuanelox622/Space_X/e5b2661909ef6a687571b3d70733148388ac8116/Captura%20de%20pantalla%202025-08-10%20042529.png" width="600" />
 </p>
-
 
 ### 💎 Escena Objeto – Gemas
 
