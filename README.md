@@ -185,12 +185,22 @@ Amarilla (Salto / Rebote): Impulsa al jugador hacia arriba para alcanzar zonas e
 Roja (Frágil): Desaparece poco después de ser pisada, obligando a avanzar rápido.  
 Morada (Reinicio): Al pisarla, reinicia la escena desde el inicio.
 
-### 💎 Gema Roja – Coleccionable
-
-**Descripción General** 
+### 💎 Gema Roja – Objeto 
 Gemas que incrementan el contador en el HUD y sirven de guía visual.  
 Se recolectan automáticamente al tocarse.  
 El contador se reinicia al pasar al siguiente nivel.
+
+### 🖥️ UI – Botones de Control
+Nodo Control (UI Principal)
+Nodo raíz para los elementos de interfaz en pantalla.
+
+Botón Guardar (BotonGuardar)
+Botón que permite guardar la partida actual al presionarlo.
+Debe estar conectado a la función guardar_partida() del script del jugador o controlador.
+
+Botón Volver al Menú (BotonMenu)
+Botón que permite salir al menú principal al presionarlo.
+Debe estar conectado a la función volver_menu() del script del jugador o controlador.
 
  ###  Imagen Referente a La Escena 
 <p align="center">
@@ -231,8 +241,21 @@ Imagen de fondo espacial que ambienta el nivel.
 Se mantienen los mismos tipos y movimientos de plataformas del nivel 1.  
 La dificultad radica en la disposición y el diseño, que hacen que el recorrido sea más exigente.
 
-### 💎 Gema Roja – Coleccionable
+### 💎 Gema Roja – Objeto
 Funciona igual que en el nivel 1; se recolectan automáticamente y el contador se reinicia al avanzar de nivel.
+
+### 🖥️ UI – Botones de Control
+Nodo Control (UI Principal)
+Nodo raíz para los elementos de interfaz en pantalla.
+
+Botón Guardar (BotonGuardar)
+Botón que permite guardar la partida actual al presionarlo.
+Debe estar conectado a la función guardar_partida() del script del jugador o controlador.
+
+Botón Volver al Menú (BotonMenu)
+Botón que permite salir al menú principal al presionarlo.
+Debe estar conectado a la función volver_menu() del script del jugador o controlador.
+
 
  ###  Imagen Referente a La Escena 
 <p align="center">
