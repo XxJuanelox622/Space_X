@@ -65,7 +65,7 @@ tamaño y color blanco para destacar sobre el fondo espacial.
 
   
   ###  Imagen Referente del Nivel
-  ![Captura de pantalla 2025-07-06 130451](https://github.com/user-attachments/assets/0be9e0fc-4cd1-432b-ad96-3373d740190f)
+  ![Captura de pantalla 2025-07-06 130451]([https://github.com/user-attachments/assets/0be9e0fc-4cd1-432b-ad96-3373d740190f](https://github.com/XxJuanelox622/Space_X/blob/f6948ba15922efdfa0c802c463f9987de028e027/capturas%20escenas/Menu.png))
 
 
 
