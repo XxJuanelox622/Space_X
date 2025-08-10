@@ -64,12 +64,10 @@ tamaño y color blanco para destacar sobre el fondo espacial.
 - ⏩ Continuar: Permite seguir desde el último progreso guardado.
 
   
-  ###  Imagen Referente del Nivel
+ ###  Imagen Referente a La Escena 
 <p align="center">
   <img src="https://github.com/XxJuanelox622/Space_X/raw/f6948ba15922efdfa0c802c463f9987de028e027/capturas%20escenas/Menu.png" alt="Menú del juego" width="400"/>
 </p>
-
-
 
 
   ### 👤 Personaje Principal – Space X  
@@ -93,9 +91,10 @@ Define la forma de colisión del personaje para detectar interacciones físicas 
 #### 📷 Camera2D  
 Cámara que sigue al personaje para mantenerlo centrado en la pantalla durante el juego.  
 
-###  Imagen Referente del Nivel
-  ![Captura de pantalla 2025-07-06 130451](<img width="570" height="570" alt="image" src="https://github.com/user-attachments/assets/ae5b7462-d644-472a-a2e9-8137e2eb15b3" />
-)
+ ###  Imagen Referente a La Escena 
+ <p align="center">
+  <img src="https://github.com/XxJuanelox622/Space_X/raw/765a3328492bdd772221d536dccf5355bdce9d55/capturas%20escenas/Personaje.png" alt="Personaje del juego" width="500"/>
+</p>
 
 
 ### 🛠️ Escena de Plataformas – Space X  
@@ -124,9 +123,10 @@ Elemento físico estático que impide que los objetos atraviesen la plataforma y
 #### 🔲 CollisionShape2D (para StaticBody2D)  
 Forma de colisión que define el área física de la plataforma para el cuerpo estático.  
 
- ###  Imagen Referente del Nivel
-  ![Captura de pantalla 2025-07-06 130451](https://github.com/user-attachments/assets/0be9e0fc-4cd1-432b-ad96-3373d740190f)
-
+ ###  Imagen Referente a La Escena 
+  <p align="center">
+  <img src="https://github.com/XxJuanelox622/Space_X/raw/765a3328492bdd772221d536dccf5355bdce9d55/capturas%20escenas/Plataforma.png" alt="Plataforma del juego" width="500"/>
+</p>
 
 
 ### 🎮 Nivel 1 – Plataformas y Gemas
@@ -192,8 +192,10 @@ Gemas que incrementan el contador en el HUD y sirven de guía visual.
 Se recolectan automáticamente al tocarse.  
 El contador se reinicia al pasar al siguiente nivel.
 
-
-
+ ###  Imagen Referente a La Escena 
+<p align="center">
+  <img src="https://github.com/XxJuanelox622/Space_X/raw/765a3328492bdd772221d536dccf5355bdce9d55/capturas%20escenas/Level%201.png" alt="Nivel 1 del juego" width="500"/>
+</p>
 
 
 ### 🎮 Nivel 2 – Plataformas y Gemas (Dificultad Incrementada)
@@ -232,9 +234,10 @@ La dificultad radica en la disposición y el diseño, que hacen que el recorrido
 ### 💎 Gema Roja – Coleccionable
 Funciona igual que en el nivel 1; se recolectan automáticamente y el contador se reinicia al avanzar de nivel.
 
-
-
-
+ ###  Imagen Referente a La Escena 
+<p align="center">
+  <img src="https://github.com/XxJuanelox622/Space_X/raw/765a3328492bdd772221d536dccf5355bdce9d55/capturas%20escenas/level%202.png" alt="Nivel 2 del juego" width="500"/>
+</p>
 
 
 ### 💎 Escena Objeto – Gemas
@@ -256,10 +259,11 @@ Controla la animación visual de la moneda (brillo, rotación, etc.).
 
 #### 🔲 CollisionShape2D  
 Define la forma de colisión para detectar cuándo el jugador toca la moneda.
-  
 
-
-
+   ###  Imagen Referente a La Escena 
+<p align="center">
+  <img src="https://github.com/XxJuanelox622/Space_X/raw/765a3328492bdd772221d536dccf5355bdce9d55/capturas%20escenas/objeto.png" alt="Objeto del juego" width="500"/>
+</p>
 
 
 ### 🧩 Hub – Diseño del Contador de Gemas
@@ -283,3 +287,8 @@ Etiqueta que muestra la letra “X” indicando la cantidad.
 
 #### 🔢 Label – `contadorGemas`  
 Etiqueta que muestra el número actual de gemas recolectadas.
+
+ ###  Imagen Referente a La Escena 
+ <p align="center">
+  <img src="https://github.com/XxJuanelox622/Space_X/raw/765a3328492bdd772221d536dccf5355bdce9d55/capturas%20escenas/Hub.png" alt="Hub del juego" width="500"/>
+</p>
