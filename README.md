@@ -670,7 +670,7 @@ var save_data = {}  ### Diccionario para almacenar datos guardados durante la pa
 
 <p align="center">
   <video width="640" height="360" controls>
-    <source src="https://github.com/XxJuanelox622/Space_X/raw/224f0cd80026ec7185be4d59859a60c1aca77d49/videos/Grabaci%C3%B3n%20de%20pantalla%202025-08-10%20052449.mp4v" type="video/mp4">
+    <source src="https://github.com/XxJuanelox622/Space_X/raw/224f0cd80026ec7185be4d59859a60c1aca77d49/videos/Grabaci%C3%B3n%20de%20pantalla%202025-08-10%20052449.mp4" type="video/mp4">
   </video>
 </p>
 
