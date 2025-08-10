@@ -14,17 +14,44 @@ mundos y escenarios suspendidos entre las estrellas.
 
 ## Recursos Utilizados (imagenes, sonidos, etc)
 #### Personaje
-![Personaje.]()
+<p align="center"><b>Personaje Principal (male_hero)</b></p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/XxJuanelox622/Space_X/fbe16ceb6f72e5362a2e7ab69a0e03a3e0a7a30f/SPRITES/PERSONAJE/male_hero.png" width="600" />
+</p>
+
 #### Fondos
-![fondoMenu.]()
-![fondoL1.]()
-![fondoL2.]()
+<p align="center"><b>Fondo Nivel 1</b></p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/XxJuanelox622/Space_X/fbe16ceb6f72e5362a2e7ab69a0e03a3e0a7a30f/SPRITES/FONDO/Fondo_L1.jpg" width="600" />
+</p>
+
+<p align="center"><b>Fondo Nivel 2</b></p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/XxJuanelox622/Space_X/fbe16ceb6f72e5362a2e7ab69a0e03a3e0a7a30f/SPRITES/FONDO/fondo_L2.jpg" width="600" />
+</p>
+
+<p align="center"><b>Menú de Inicio</b></p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/XxJuanelox622/Space_X/fbe16ceb6f72e5362a2e7ab69a0e03a3e0a7a30f/SPRITES/MENU%20DE%20INICIO/MENU.jpg" width="600" />
+</p>
 #### Obejeto
-![Gema.](https://github.com/XxJuanelox622/Pixel_Jump_1/blob/main/coin.png?raw=true)
+<p align="center"><b>Gema Roja (spr_coin_roj)</b></p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/XxJuanelox622/Space_X/fbe16ceb6f72e5362a2e7ab69a0e03a3e0a7a30f/SPRITES/OBJETO/spr_coin_roj.png" width="600" />
+</p>
+
 #### Plataformas
-![Plataformas.](https://github.com/XxJuanelox622/Pixel_Jump_1/blob/main/Platform.png?raw=true)
+<p align="center"><b>Plataforma (1)</b></p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/XxJuanelox622/Space_X/fbe16ceb6f72e5362a2e7ab69a0e03a3e0a7a30f/SPRITES/PLATAFORMAS/Platform%20(1).png" width="600" />
+</p>
+
 #### Portal
-![Portal.](https://github.com/XxJuanelox622/Pixel_Jump_1/blob/main/Ship_portal_32x32.png?raw=true)
+<p align="center"><b>Portal de Nave Espacial (Ship_portal_32x32)</b></p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/XxJuanelox622/Space_X/fbe16ceb6f72e5362a2e7ab69a0e03a3e0a7a30f/SPRITES/PORTAL/Ship_portal_32x32.png" width="600" />
+</p>
+
 
 ## Descripción de cada escena (nivel, plataforma, personaje, etc y una imagen referente)
 
