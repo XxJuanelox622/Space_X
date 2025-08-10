@@ -259,7 +259,7 @@ Debe estar conectado a la función volver_menu() del script del jugador o contro
 
  ###  Imagen Referente a La Escena 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/XxJuanelox622/Space_X/e5b2661909ef6a687571b3d70733148388ac8116/Captura%20de%20pantalla%202025-08-10%20042529.png" width="600" />
+  <img src="https://raw.githubusercontent.com/XxJuanelox622/Space_X/ae33db9818b01f43adf6ae50802e96d21d99750a/Captura%20de%20pantalla%202025-08-10%20042552.png" width="600" />
 </p>
 
 ### 💎 Escena Objeto – Gemas
