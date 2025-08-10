@@ -125,4 +125,158 @@ Forma de colisión que define el área física de la plataforma para el cuerpo e
   ![Captura de pantalla 2025-07-06 130451](https://github.com/user-attachments/assets/0be9e0fc-4cd1-432b-ad96-3373d740190f)
 
 
+
+### 🎮 Nivel 1 – Plataformas y Gemas
+
+**Descripción General** 
+El jugador inicia sobre una plataforma fija y debe atravesar distintas plataformas de colores,
+cada una con un comportamiento específico, para llegar al portal de salida.  
+Las gemas rojas funcionan como coleccionables y guía visual del recorrido ideal.  
+Si el jugador cae al vacío o pisa una plataforma de reinicio, volverá al comienzo.
+
+---
+
+### **Estructura de Nodos**  
+
+#### 🟢 Node2D (Nodo raíz)  
+Nodo raíz que contiene todos los elementos del nivel.
+
+
+### 🧩 Hub – Interfaz Gráfica del Jugador (HUD) 
+Contiene la interfaz gráfica que muestra la cantidad de gemas recolectadas.
+
+#### 🔢 Contador0  
+- Muestra cuántas gemas ha recolectado el jugador (inicia en “x00”).  
+- Compuesto por un ícono de gema roja (`TextureRect`) y dos etiquetas (`Label`)
+-  para la “x” y el valor numérico.
+
+### ⚠️ area_reset – Zona de Reinicio
+Zona invisible que detecta si el jugador cae fuera del recorrido.
+
+#### 🔲 CollisionShape2D  
+Define el área que reinicia el nivel al ser tocada.
+
+### 🚪 Portal – Punto Final del Nivel
+El portal es el punto final del nivel, animado y que detecta la llegada del 
+jugador para avanzar.
+
+#### 🎞️ AnimatedSprite2D  
+Anima el portal.
+
+#### 🔲 CollisionShape2D  
+Detecta la colisión con el jugador.
+
+### 🌌 Sprite2D – Fondo 
+Imagen de fondo con temática espacial que ambienta el nivel.
+
+### 🧍 Personaje – Control del Jugador  
+Personaje controlado por el usuario que puede caminar, saltar y recolectar 
+gemas rojas automáticamente al tocarlas.
+
+
+### 🧱 Tipos de Plataformas y Comportamientos
+
+Verde (Fija): El jugador puede quedarse sobre ella sin que se mueva.  
+Azul (Oscilatoria): Se mueve de forma horizontal o vertical, exigiendo saltos precisos.  
+Amarilla (Salto / Rebote): Impulsa al jugador hacia arriba para alcanzar zonas elevadas.  
+Roja (Frágil): Desaparece poco después de ser pisada, obligando a avanzar rápido.  
+Morada (Reinicio): Al pisarla, reinicia la escena desde el inicio.
+
+### 💎 Gema Roja – Coleccionable
+
+**Descripción General** 
+Gemas que incrementan el contador en el HUD y sirven de guía visual.  
+Se recolectan automáticamente al tocarse.  
+El contador se reinicia al pasar al siguiente nivel.
+
+
+
+
+
+### 🎮 Nivel 2 – Plataformas y Gemas (Dificultad Incrementada)
+
+**Descripción General** 
+El nivel 2 conserva los mismos tipos de plataformas y movimientos que el nivel 1, pero la dificultad aumenta debido a la distribución más compleja y desafiante de las plataformas.  
+Los saltos y desplazamientos exigen mayor precisión para alcanzar el portal de salida.  
+Las gemas rojas, además de ser coleccionables, guían al jugador a lo largo del recorrido ideal.
+
+---
+
+### **Estructura de Nodos**
+
+#### 🟢 Node2D (Nodo raíz)  
+Nodo raíz que contiene todos los elementos del nivel.
+
+### 🧩 Hub – Interfaz Gráfica del Jugador (HUD)  
+Muestra la cantidad de gemas recolectadas en este nivel.
+
+#### 🔢 ContadorGemas  
+Contador que inicia en “x00” y se actualiza con cada gema recolectada.
+
+### ⚠️ area_reset – Zona de Reinicio 
+Detecta si el jugador cae fuera del recorrido para reiniciar el nivel.
+
+### 🚪 Portal – Punto Final del Nivel
+El portal animado que detecta cuando el jugador llega para avanzar al siguiente nivel.
+
+### 🌌 Sprite2D – Fondo  
+Imagen de fondo espacial que ambienta el nivel.
+
+### 🧱 Plataformas y Comportamientos
+Se mantienen los mismos tipos y movimientos de plataformas del nivel 1.  
+La dificultad radica en la disposición y el diseño, que hacen que el recorrido sea más exigente.
+
+### 💎 Gema Roja – Coleccionable
+Funciona igual que en el nivel 1; se recolectan automáticamente y el contador se reinicia al avanzar de nivel.
+
+
+
+
+
+
+### 💎 Escena Objeto – Gemas
+
+**Descripción General**   
+La escena de la moneda es un objeto coleccionable que el jugador puede recoger al tocarla. Aunque se llama “Moneda”, funciona como una gema roja coleccionable.  
+El nodo principal es un `Area2D` llamado **Moneda**, que detecta la colisión con el jugador para activar la recolección.  
+Incluye una animación visual y una forma de colisión para detectar el contacto.
+
+---
+
+### **Estructura de Nodos**
+
+#### 🕹️ Area2D (Nodo Principal) – Moneda  
+Nodo raíz que detecta la presencia del jugador mediante colisiones.
+
+#### 🎞️ AnimatedSprite2D  
+Controla la animación visual de la moneda (brillo, rotación, etc.).
+
+#### 🔲 CollisionShape2D  
+Define la forma de colisión para detectar cuándo el jugador toca la moneda.
   
+
+
+
+
+
+### 🧩 Hub – Diseño del Contador de Gemas
+
+**Descripción General**  
+El Hub es la interfaz gráfica que muestra al jugador cuántas gemas ha recolectado durante el nivel.  
+El nodo principal es un `CanvasLayer`, que asegura que la interfaz se mantenga fija en la pantalla, independiente del movimiento del personaje o la cámara.
+
+---
+
+### **Estructura de Nodos**
+
+#### 🎛️ CanvasLayer (Nodo Principal)  
+Contiene todos los elementos visuales del HUD.
+
+#### 🖼️ TextureRect  
+Muestra el ícono visual de la gema roja.
+
+#### 🔤 Label – "X"  
+Etiqueta que muestra la letra “X” indicando la cantidad.
+
+#### 🔢 Label – `contadorGemas`  
+Etiqueta que muestra el número actual de gemas recolectadas.
