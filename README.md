@@ -668,8 +668,14 @@ var save_data = {}  ### Diccionario para almacenar datos guardados durante la pa
 
 ## Juego Prueba 
 
-<p align="center">
-  <img src="https://github.com/XxJuanelox622/Space_X/raw/224f0cd80026ec7185be4d59859a60c1aca77d49/videos/tu_gif.gif" alt="Demo Video" width="640"/>
-</p>
+
 
 ## Guardado de partida
+
+
+
+## Comentarios finales sobre la experiencia del desarrollo
+
+Al comienzo del proyecto me sentí bastante tranquilo, disfrutando la parte creativa y avanzando con confianza. Sin embargo, cuando llegué a la implementación del guardado de la partida, la situación se volvió bastante desafiante y estresante. Pasé casi cuatro días intentando que funcionara correctamente, enfrentando varios obstáculos que no lograba superar. Fue un proceso frustrante, pero con paciencia y perseverancia, finalmente, al quinto día, logré que todo funcionara como esperaba.
+
+Esta experiencia me enseñó mucho sobre la importancia de la constancia y la calma ante las dificultades, y ahora valoro más cada pequeño logro en el desarrollo.
