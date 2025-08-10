@@ -1,0 +1,219 @@
+[gd_scene load_steps=19 format=3 uid="uid://dht1iwnf87p86"]
+
+[ext_resource type="PackedScene" uid="uid://bl2hicgb7va32" path="res://hub.tscn" id="1_psxy2"]
+[ext_resource type="Script" uid="uid://ddh740ojjt0bs" path="res://contador.gd" id="2_wwdpc"]
+[ext_resource type="Texture2D" uid="uid://beyjmaau534lo" path="res://sprites/fondos niveles/fondo_L2.jpg" id="3_6faey"]
+[ext_resource type="PackedScene" uid="uid://cnc60ffuvqs6m" path="res://personaje.tscn" id="4_nc7oo"]
+[ext_resource type="Texture2D" uid="uid://cohq6yl3s1ok2" path="res://Ship_portal_32x32.png" id="4_wwdpc"]
+[ext_resource type="PackedScene" uid="uid://biofxf4yqfjwu" path="res://plataforma.tscn" id="5_6x3wt"]
+[ext_resource type="PackedScene" uid="uid://wt6hkql146dn" path="res://objeto.tscn" id="7_6faey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3453u"]
+size = Vector2(2230, 263)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6faey"]
+atlas = ExtResource("4_wwdpc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc7oo"]
+atlas = ExtResource("4_wwdpc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x3wt"]
+atlas = ExtResource("4_wwdpc")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3453u"]
+atlas = ExtResource("4_wwdpc")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46pvi"]
+atlas = ExtResource("4_wwdpc")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvkd4"]
+atlas = ExtResource("4_wwdpc")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj4lr"]
+atlas = ExtResource("4_wwdpc")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00xh1"]
+atlas = ExtResource("4_wwdpc")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8tfmj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6faey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc7oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6x3wt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3453u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46pvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvkd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj4lr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00xh1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jw1dd"]
+radius = 20.2237
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Hub" parent="." instance=ExtResource("1_psxy2")]
+
+[node name="Contador0" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_wwdpc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(430, 343.75)
+scale = Vector2(3.87847, 3.10972)
+texture = ExtResource("3_6faey")
+
+[node name="area_reset2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_reset2"]
+position = Vector2(428, 774.5)
+shape = SubResource("RectangleShape2D_3453u")
+
+[node name="PortalM" type="Area2D" parent="area_reset2"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="area_reset2/PortalM"]
+position = Vector2(1458, 225)
+scale = Vector2(1.53125, 1.625)
+sprite_frames = SubResource("SpriteFrames_8tfmj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_reset2/PortalM"]
+position = Vector2(1458, 224)
+shape = SubResource("CircleShape2D_jw1dd")
+
+[node name="Personaje" parent="area_reset2" instance=ExtResource("4_nc7oo")]
+position = Vector2(-277, 398)
+
+[node name="Plataforma" parent="area_reset2" instance=ExtResource("5_6x3wt")]
+position = Vector2(-165, 593)
+tipo = 3
+
+[node name="Plataforma2" parent="area_reset2" instance=ExtResource("5_6x3wt")]
+position = Vector2(-83, 444)
+tipo = 2
+
+[node name="Plataforma3" parent="area_reset2" instance=ExtResource("5_6x3wt")]
+position = Vector2(7, 472)
+tipo = 2
+
+[node name="Plataforma4" parent="area_reset2" instance=ExtResource("5_6x3wt")]
+position = Vector2(80, 437)
+tipo = 2
+
+[node name="Plataforma5" parent="area_reset2" instance=ExtResource("5_6x3wt")]
+position = Vector2(184, 405)
+
+[node name="Plataforma6" parent="area_reset2" instance=ExtResource("5_6x3wt")]
+position = Vector2(253, 500)
+tipo = 3
+
+[node name="Plataforma7" parent="area_reset2" instance=ExtResource("5_6x3wt")]
+position = Vector2(323, 444)
+tipo = 4
+
+[node name="Plataforma" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(-273, 441)
+
+[node name="Plataforma2" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(387, 413)
+
+[node name="Plataforma3" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(522, 416)
+tipo = 1
+
+[node name="Plataforma4" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(631, 395)
+tipo = 3
+
+[node name="Plataforma5" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(720, 311)
+
+[node name="Plataforma6" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(791, 279)
+tipo = 2
+
+[node name="Plataforma7" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(857, 248)
+tipo = 2
+
+[node name="Plataforma8" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(925, 219)
+tipo = 2
+
+[node name="Plataforma9" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(990, 479)
+tipo = 2
+
+[node name="Plataforma10" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(1069, 445)
+tipo = 2
+
+[node name="Plataforma11" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(1154, 416)
+tipo = 3
+
+[node name="Plataforma12" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(1242, 286)
+tipo = 2
+
+[node name="Plataforma13" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(1302, 336)
+tipo = 4
+
+[node name="Plataforma14" parent="." instance=ExtResource("5_6x3wt")]
+position = Vector2(1371, 286)
+tipo = 1
+
+[node name="Moneda" parent="." instance=ExtResource("7_6faey")]
+position = Vector2(-167, 454)
+
+[node name="Moneda2" parent="." instance=ExtResource("7_6faey")]
+position = Vector2(74, 390)
+
+[node name="Moneda3" parent="." instance=ExtResource("7_6faey")]
+position = Vector2(388, 358)
+
+[node name="Moneda4" parent="." instance=ExtResource("7_6faey")]
+position = Vector2(633, 346)
+
+[node name="Moneda5" parent="." instance=ExtResource("7_6faey")]
+position = Vector2(850, 206)
+
+[node name="Moneda6" parent="." instance=ExtResource("7_6faey")]
+position = Vector2(986, 203)
+
+[node name="Moneda7" parent="." instance=ExtResource("7_6faey")]
+position = Vector2(1151, 333)
+
+[node name="Moneda8" parent="." instance=ExtResource("7_6faey")]
+position = Vector2(1242, 236)
+
+[connection signal="body_entered" from="area_reset2" to="area_reset2/Personaje" method="_on_area_reset_2_body_entered"]
+[connection signal="body_entered" from="area_reset2/PortalM" to="area_reset2/Personaje" method="_on_portal_m_body_entered"]

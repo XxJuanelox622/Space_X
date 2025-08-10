@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh5xk33v8rnpp"]
+
+[ext_resource type="Script" uid="uid://bxst7j2fkor6t" path="res://menu.gd" id="1_4hy44"]
+[ext_resource type="Texture2D" uid="uid://co7c5oro7lygq" path="res://sprites/menu/MENU.jpg" id="1_mae5d"]
+[ext_resource type="FontFile" uid="uid://ds3yy0ejok1fi" path="res://sprites/Letras/PixelOperator8.ttf" id="2_4hy44"]
+[ext_resource type="FontFile" uid="uid://ct1svuomth4ml" path="res://sprites/Letras/PixelOperator8-Bold.ttf" id="3_ytr4m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l48gv"]
+
+[node name="MENU" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4hy44")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mae5d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 246.0
+offset_right = 917.0
+offset_bottom = 368.0
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.768627, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_4hy44")
+theme_override_font_sizes/font_size = 50
+text = "PLAY"
+
+[node name="Continuar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4hy44")
+theme_override_font_sizes/font_size = 50
+text = "Continue playing"
+
+[node name="Titulo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 75.0
+offset_right = 908.0
+offset_bottom = 176.0
+theme_override_fonts/font = ExtResource("3_ytr4m")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l48gv")
+text = "SPACE X"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Continuar" to="." method="_on_continuar_pressed"]

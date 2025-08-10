@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl2hicgb7va32"]
+
+[ext_resource type="Texture2D" uid="uid://bkdyctgfr5w06" path="res://sprites/menu/spr_coin_rojo_1.png" id="2_ysrp0"]
+[ext_resource type="FontFile" uid="uid://ct1svuomth4ml" path="res://sprites/Letras/PixelOperator8-Bold.ttf" id="3_6eldl"]
+
+[sub_resource type="GDScript" id="GDScript_hjueh"]
+script/source = "extends CanvasLayer
+
+@onready var contador_monedas: Label = $ContadorMonedas
+
+func _ready() -> void:
+	var contador = get_node(\"%Contador0\")
+	contador.puntuacion_actualizada.connect(_on_puntuacion_actualizada)
+
+func _on_puntuacion_actualizada(puntuacion_actual: int) -> void:
+	contador_monedas.text = str(puntuacion_actual)
+"
+
+[node name="Hub" type="CanvasLayer"]
+script = SubResource("GDScript_hjueh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 12.0
+offset_top = 13.0
+offset_right = 106.0
+offset_bottom = 120.0
+texture = ExtResource("2_ysrp0")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 128.0
+offset_top = 58.0
+offset_right = 173.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("3_6eldl")
+theme_override_font_sizes/font_size = 45
+text = "X"
+
+[node name="ContadorMonedas" type="Label" parent="."]
+offset_left = 181.0
+offset_top = 58.0
+offset_right = 291.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("3_6eldl")
+theme_override_font_sizes/font_size = 45
+text = "00"
