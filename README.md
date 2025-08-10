@@ -341,3 +341,331 @@ Etiqueta que muestra el número actual de gemas recolectadas.
  <p align="center">
   <img src="https://github.com/XxJuanelox622/Space_X/raw/765a3328492bdd772221d536dccf5355bdce9d55/capturas%20escenas/Hub.png" alt="Hub del juego" width="500"/>
 </p>
+
+### Descripción de scripts empleados
+
+
+## Script para el nodo Control del menú principal
+
+### - _on_play_pressed: inicia nueva partida (level_1)
+### - _on_continuar_pressed: carga la partida guardada y cambia al nivel correspondiente
+
+extends Control
+
+### Ruta del archivo de guardado (user:// es la carpeta segura para datos del usuario)
+var save_path := "user://save_game.save"
+
+### -------------------------
+### Iniciar nueva partida
+### -------------------------
+### Conectar la señal pressed() del botón "Play" a este método
+func _on_play_pressed() -> void:
+	### Cambia a la escena del primer nivel (asegúrate de que exista res://level_1.tscn)
+	get_tree().change_scene_to_file("res://level_1.tscn")
+
+
+### -------------------------
+### Continuar partida guardada
+### -------------------------
+### Conectar la señal pressed() del botón "Continuar" a este método
+func _on_continuar_pressed() -> void:
+	### Intentamos abrir el archivo de guardado en modo lectura
+	var file := FileAccess.open(save_path, FileAccess.READ)
+
+	### Si `file` no es null/invalid, entonces existe y podemos leer
+	if file:
+		### get_var() recupera el objeto guardado (si guardaste con store_var)
+		### Aquí colocamos los datos leídos en Globals.save_data para pasarlos a la escena cargada
+		Globals.save_data = file.get_var()
+		### Cerramos el archivo siempre que hayamos terminado
+		file.close()
+
+		### Obtenemos el nivel guardado; si no existe la clave "nivel" usamos 1 por defecto
+		var nivel := Globals.save_data.get("nivel", 1)
+
+		### Cambiamos a la escena correspondiente al nivel guardado (ej. level_1, level_2, ...)
+		get_tree().change_scene_to_file("res://level_" + str(nivel) + ".tscn")
+
+		### Mensaje de depuración en la consola
+		print("Partida cargada correctamente. Nivel:", nivel)
+	else:
+		### Si no se pudo abrir el archivo, notificamos (no existe guardado)
+		print("No se encontró partida guardada en:", save_path)
+
+
+  ## Script del personaje
+  
+extends CharacterBody2D
+
+### Velocidad de movimiento en píxeles/segundo
+var velocidad = 200
+### Fuerza del salto (valor negativo porque es hacia arriba)
+var brinco = -280
+### Gravedad que se aplicará cuando no esté en el suelo
+var gravedad = 800
+### Referencia al nodo AnimatedSprite2D para manejar animaciones
+@onready var animated_sprite = $AnimatedSprite2D
+### Ruta del archivo donde se guardará la partida
+var save_path = "user://save_game.save"
+
+func _ready():
+	### Se ejecuta al iniciar la escena
+	add_to_group("jugador")  ### Agrega este nodo al grupo "jugador"
+
+	### Si hay datos guardados en Globals, carga posición y reinicia
+	if Globals.save_data.size() > 0:
+		$CollisionShape2D.disabled = true  ### Desactiva colisiones temporalmente
+
+		var pos_guardada = Globals.save_data.get("player_position", global_position)
+		pos_guardada.y -= 5  ### Ajuste de posición para evitar problemas
+		set_global_position(pos_guardada)
+
+		velocity = Vector2.ZERO  ### Resetea la velocidad
+
+		$CollisionShape2D.disabled = false  ### Reactiva colisiones
+
+		Globals.save_data.clear()  ### Limpia los datos cargados
+
+func _physics_process(delta):
+	### Manejo de movimiento horizontal
+	var direccion = Input.get_axis("ui_left","ui_right")
+	velocity.x = direccion * velocidad
+
+	### Aplicar gravedad cuando no esté en el suelo
+	if not is_on_floor(): 
+		velocity.y += gravedad * delta
+
+	### Saltar si se presiona "ui_up" y está en el suelo
+	if Input.is_action_just_pressed("ui_up") and is_on_floor():
+		velocity.y = brinco
+
+	### Aplicar movimiento y actualizar animaciones
+	move_and_slide()
+	update_animation()
+
+func update_animation():
+	### Cambiar dirección del sprite según movimiento
+	if velocity.x > 0:
+		animated_sprite.flip_h = false
+	elif velocity.x < 0:
+		animated_sprite.flip_h = true
+
+	### Animaciones de salto/caída
+	if not is_on_floor():
+		if velocity.y <= 400:
+			animated_sprite.play("jump")
+		else:
+			animated_sprite.play("fall")
+		return
+
+	### Animaciones de correr o estar quieto
+	if velocity.x != 0:
+		animated_sprite.play("run")
+	else:
+		animated_sprite.play("idle")
+
+func get_gemas_actuales() -> int:
+	### Retorna la cantidad actual de gemas (placeholder)
+	return 0
+
+func guardar_partida():
+	### Guarda la partida en archivo
+	var save_data = {
+		"nivel": 1,  ### Nivel actual
+		"player_position": global_position,  ### Posición del jugador
+		"gemas": get_gemas_actuales()  ### Número de gemas
+	}
+
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	if file:
+		file.store_var(save_data)
+		file.close()
+		print("Partida guardada correctamente.")
+	else:
+		print("Error al guardar la partida.")
+
+### Eventos de áreas que reinician el nivel
+func _on_area_reset_body_entered(body: Node2D) -> void:
+	get_tree().reload_current_scene()
+
+func _on_area_reset_2_body_entered(body: Node2D) -> void:
+	get_tree().reload_current_scene()
+
+### Eventos de áreas que cambian de nivel y vuelven al menú
+func _on_portal_body_entered(body: Node2D) -> void:
+	get_tree().change_scene_to_file("res://Level2.tscn")
+
+func _on_portal_m_body_entered(body: Node2D) -> void:
+	get_tree().change_scene_to_file("res://menu.tscn")
+
+
+## Script para manejar distintos tipos de plataformas con comportamientos únicos.
+
+extends Area2D
+
+### Enumeración para los tipos de plataformas disponibles.
+enum TipoPlataforma {FIJA, OSCILATORIA, FRAGIL, REBOTE, REINICIO}
+
+### Tipo de plataforma (editable en el inspector). Por defecto, FIJA.
+@export var tipo: TipoPlataforma = TipoPlataforma.FIJA
+
+### Fuerza extra que aplica la plataforma de rebote.
+@export var fuerza_rebote := 2.0
+
+func _ready():
+	### Llama a la función para configurar la plataforma según su tipo.
+	actualizar_plataforma()
+
+	### Habilita la detección de colisiones (monitoring).
+	monitorable = true
+	monitoring = true
+	
+func actualizar_plataforma():
+	### Cambia el color y comportamiento según el tipo de plataforma.
+	match tipo:
+		TipoPlataforma.FIJA:
+			### Plataforma verde que no se mueve ni cambia.
+			$Sprite2D.modulate = Color.GREEN
+
+		TipoPlataforma.OSCILATORIA:
+			### Plataforma azul que se mueve horizontalmente.
+			$Sprite2D.modulate = Color.BLUE
+			oscilar()
+
+		TipoPlataforma.FRAGIL:
+			### Plataforma roja que desaparece tras un breve tiempo al pisarla.
+			$Sprite2D.modulate = Color.RED
+
+		TipoPlataforma.REBOTE:
+			### Plataforma amarilla que impulsa al jugador hacia arriba.
+			$Sprite2D.modulate = Color.YELLOW
+
+		TipoPlataforma.REINICIO:
+			### Plataforma morada que reinicia el nivel.
+			$Sprite2D.modulate = Color.REBECCA_PURPLE
+
+func _on_body_entered(body: Node2D) -> void:
+	### Detecta cuando un objeto entra en contacto con la plataforma.
+	if body.is_in_group("jugador"):
+		
+		match tipo:
+			TipoPlataforma.FRAGIL:
+				### Espera 0.5 segundos y luego elimina la plataforma.
+				await get_tree().create_timer(0.5).timeout
+				queue_free()
+
+			TipoPlataforma.REINICIO:
+				### Reinicia la escena actual.
+				get_tree().reload_current_scene()
+
+			TipoPlataforma.REBOTE:
+				### Si el jugador tiene método de rebote, lo llama; si no, ajusta su velocidad manualmente.
+				if body.has_method("puede_rebotar"):
+					body.puede_rebotar(fuerza_rebote)
+				else:
+					body.velocity.y = body.brinco * fuerza_rebote
+
+	pass ### Indicación de que no hay más código en esta función por ahora.
+
+func oscilar():
+	### Crea un tween para mover la plataforma de un lado a otro continuamente.
+	var tween = create_tween()
+	tween.tween_property(self, "position:x", position.x + 100, 2)
+	tween.tween_property(self, "position:x", position.x - 100, 2)
+	tween.set_loops()
+
+
+ ## Script: Gema.gd  
+### Descripción: Este script controla el comportamiento de la gema o el objeto del juego.  
+### Cuando el jugador la toca, aumenta el contador de puntos y la gema desaparece.
+
+extends Area2D  ### Nodo base: Detecta colisiones con el jugador
+
+@onready var contador: Node = %Contador0  ### Referencia al nodo que lleva el conteo de puntos
+
+### Función que se ejecuta cuando un cuerpo (body) entra en el área de la gema
+func _on_body_entered(body: Node2D) -> void:
+	contador.incrementa_un_punto()  ### Llama al contador para sumar un punto
+	queue_free()  ### Elimina la gema de la escena
+	pass  ### Indica que no hay más instrucciones después
+
+
+ ## Script: HUD.gd  
+### Descripción: Muestra en pantalla el conteo de monedas y actualiza el texto cuando cambia la puntuación.
+
+extends CanvasLayer  ### Nodo para mostrar elementos de interfaz en pantalla
+
+@onready var contador_monedas: Label = $ContadorMonedas  ### Etiqueta donde se mostrará el número de monedas
+
+### Se ejecuta cuando la escena está lista
+func _ready() -> void:
+	var contador = get_node("%Contador")  ### Busca el nodo que controla la puntuación
+	contador.puntuacion_actualizada.connect(_on_puntuacion_actualizada)  ### Conecta la señal para actualizar la interfaz
+
+### Actualiza el texto del contador de monedas en la interfaz
+func _on_puntuacion_actualizada(puntuacion_actual: int) -> void:
+	contador_monedas.text = str(puntuacion_actual)  ### Convierte la puntuación a texto y la muestra
+
+
+ ## Script: ControlJuego.gd  
+### Descripción: Controla la interacción con los botones para volver al menú y guardar la partida.
+
+extends Control  ### Nodo base para interfaces de usuario
+
+### Función que se ejecuta al presionar el botón "Menú"
+func _on_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://menu.tscn")  ### Cambia la escena al menú principal
+	pass  ### Indica que no hay más instrucciones
+
+### Ruta donde se guardará el archivo de la partida
+var save_path = "user://save_game.save"
+
+### Función que se ejecuta al presionar el botón "Guardar"
+func _on_guardar_pressed():
+	var save_data = {
+		"nivel": get_nivel_actual(),  ### Obtiene el nivel actual (ejemplo)
+		"player_position": global_position,  ### Posición actual del jugador
+		"gemas": get_gemas_actuales()  ### Cantidad de gemas recolectadas
+	}
+
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	if file:
+		file.store_var(save_data)  ### Guarda los datos en el archivo
+		file.close()
+		print("Partida guardada correctamente.")
+	else:
+		print("Error al guardar la partida.")
+
+### Función que devuelve el nivel actual (debe ajustarse según el juego)
+func get_nivel_actual():
+	# Devuelve el nivel actual (ejemplo)
+	return 1
+
+### Función que devuelve la cantidad de gemas recolectadas (debe ajustarse)
+func get_gemas_actuales():
+	# Devuelve las gemas recolectadas (ejemplo)
+	return 5
+
+
+## Script: Contador.gd  
+### Descripción: Controla la puntuación y emite una señal cuando esta cambia.
+
+extends Node  ### Nodo base para lógica sin representación visual
+
+var puntuacion = 0  ### Variable que almacena la puntuación actual
+
+### Señal que se emite cuando la puntuación cambia, enviando el valor actualizado
+signal puntuacion_actualizada(puntuacion_actual: int)
+
+### Incrementa la puntuación en 1 y emite la señal para actualizar la interfaz
+func incrementa_un_punto():
+	puntuacion += 1
+	puntuacion_actualizada.emit(puntuacion)
+
+
+## Script: Globals.gd  
+### Descripción: Script singleton para almacenar datos globales del juego.
+
+extends Node  ### Nodo base para scripts globales
+
+var save_data = {}  ### Diccionario para almacenar datos guardados durante la partida
