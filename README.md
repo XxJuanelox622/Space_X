@@ -92,7 +92,7 @@ Define la forma de colisión del personaje para detectar interacciones físicas 
 Cámara que sigue al personaje para mantenerlo centrado en la pantalla durante el juego.  
 
 ###  Imagen Referente del Nivel
-  ![Captura de pantalla 2025-07-06 130451](https://github.com/user-attachments/assets/0be9e0fc-4cd1-432b-ad96-3373d740190f)
+  ![Captura de pantalla 2025-07-06 130451](blob:https://github.com/5e1174e1-181c-43e1-97ba-45d6468d7edb)
 
 
 ### 🛠️ Escena de Plataformas – Space X  
