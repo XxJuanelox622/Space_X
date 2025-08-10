@@ -669,10 +669,7 @@ var save_data = {}  ### Diccionario para almacenar datos guardados durante la pa
 ## Juego Prueba 
 
 <p align="center">
-  <video width="640" height="360" controls>
-    <source src="https://github.com/XxJuanelox622/Space_X/raw/224f0cd80026ec7185be4d59859a60c1aca77d49/videos/Grabacion_de_pantalla_2025-08-10_052449.mp4" type="video/mp4">
-    Tu navegador no soporta el video.
-  </video>
+  <img src="https://github.com/XxJuanelox622/Space_X/raw/224f0cd80026ec7185be4d59859a60c1aca77d49/videos/tu_gif.gif" alt="Demo Video" width="640"/>
 </p>
 
 ## Guardado de partida
